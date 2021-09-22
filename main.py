@@ -23,7 +23,7 @@ clf = svm.SVC(gamma='scale', probability=True)
 clf.fit(encodings,names)
 
 
-test_image = face_recognition.load_image_file('./chaeryeong_crazy.jpg')
+test_image = face_recognition.load_image_file('./Pictures/yuna_bubble.jpg')
 
 face_locations = face_recognition.face_locations(test_image)
 face_encodings = face_recognition.face_encodings(test_image, face_locations)
