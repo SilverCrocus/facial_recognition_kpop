@@ -5,6 +5,8 @@ import os
 import face_recognition
 import numpy
 from sklearn import svm
+from PIL import Image, ImageDraw
+import numpy as np
 
 encodings = []
 names = []
@@ -23,7 +25,7 @@ clf = svm.SVC(gamma='scale', probability=True)
 clf.fit(encodings,names)
 
 
-test_image = face_recognition.load_image_file('./test_images/jennie.jpg')
+test_image = face_recognition.load_image_file('./test_images/metest.png')
 
 face_locations = face_recognition.face_locations(test_image)
 face_encodings = face_recognition.face_encodings(test_image, face_locations)
@@ -40,6 +42,7 @@ for face_encoding in face_encodings:
 
     results = clf.predict_proba([face_encoding])[0]
     results = [str(int(element * 100)) for element in results]
+    # print(results)
     prob_per_class_dictionary = dict(zip(clf.classes_, results))
     probabilites.append(prob_per_class_dictionary)
 
