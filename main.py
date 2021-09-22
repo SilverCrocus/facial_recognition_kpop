@@ -23,7 +23,7 @@ clf = svm.SVC(gamma='scale', probability=True)
 clf.fit(encodings,names)
 
 
-test_image = face_recognition.load_image_file('./Pictures/yuna_bubble.jpg')
+test_image = face_recognition.load_image_file('./test_images/jennie.jpg')
 
 face_locations = face_recognition.face_locations(test_image)
 face_encodings = face_recognition.face_encodings(test_image, face_locations)
@@ -31,7 +31,7 @@ face_encodings = face_recognition.face_encodings(test_image, face_locations)
 
 face_names = []
 probabilites = []
-valid_names = ["Itzy Lia", "Itzy Yeji", "Itzy Yuna", "Itzy Ryujin", "Itzy Chaeryeong"]
+valid_names = ["Lia", "Yeji", "Yuna", "Ryujin", "Chaeryeong"]
 
 for face_encoding in face_encodings:
     name = clf.predict([face_encoding])
