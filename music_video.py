@@ -21,14 +21,14 @@ clf.fit(encodings,names)
 
 
 
-input_movie = cv2.VideoCapture("./Videos/locoteaser2.mp4")
+input_movie = cv2.VideoCapture("./Videos/wannabe.mp4")
 height = int(input_movie.get(cv2.CAP_PROP_FRAME_HEIGHT))
 width = int(input_movie.get(cv2.CAP_PROP_FRAME_WIDTH))
 length = int(input_movie.get(cv2.CAP_PROP_FRAME_COUNT))
 
 
 fourcc = cv2.VideoWriter_fourcc(*'MP4V')
-output_movie = cv2.VideoWriter('output.mp4', 0x7634706d, 24.0, (width, height))
+output_movie = cv2.VideoWriter('wannabe.mp4', 0x7634706d, 24.0, (width, height))
 
 # Initialize some variables
 
@@ -46,7 +46,9 @@ while True:
         break
 
     # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
+    rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     rgb_frame = frame[:, :, ::-1]
+    r = frame.shape[1] / float(rgb_frame.shape[1])
 
     # Find all the faces and face encodings in the current frame of video
     face_locations = face_recognition.face_locations(rgb_frame)
@@ -70,14 +72,20 @@ while True:
     for (top, right, bottom, left), name in zip(face_locations, face_names):
         if not name:
             continue
-
+        
+        # top = int(top * r)
+        # right = int(right * r)
+        # bottom = int(bottom * r)
+        # left = int(left * r)
         # Draw a box around the face
-        cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
+        cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
 
         # Draw a label with a name below the face
-        cv2.rectangle(frame, (left, bottom - 25), (right, bottom), (0, 0, 255), cv2.FILLED)
-        font = cv2.FONT_HERSHEY_DUPLEX
-        cv2.putText(frame, name, (left + 6, bottom - 6), font, 0.5, (255, 255, 255), 1)
+        # cv2.rectangle(frame, (left, bottom - 25), (right, bottom), (0, 0, 255), cv2.FILLED)
+        # font = cv2.FONT_HERSHEY_DUPLEX
+        # cv2.putText(frame, name, (left + 6, bottom - 6), font, 0.5, (255, 255, 255), 1)
+        y = top - 15 if top - 15 > 15 else top + 15
+        cv2.putText(frame, name, (left, y), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (0, 255, 0), 2)
 
     # Write the resulting image to the output video file
     print("Writing frame {} / {}".format(frame_number, length))
