@@ -11,7 +11,7 @@ Facial recognition for itzy members using Praw to get the images and facial reco
 
 ## Output Video
 * [Loco Itzy MV](https://youtu.be/0A7EIb0te0U)
-* [Wannabe Itzy MV](https://youtu.be/xUDpMVZelI)
+* [Wannabe Itzy MV](https://youtu.be/_xUDpMVZelI)
 * [In the morning Itzy MV](https://youtu.be/e0ZNThGQCS8)
 
 ## Acknowledgments
