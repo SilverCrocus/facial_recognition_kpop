@@ -1,4 +1,4 @@
-# facial_recognition_kpop
+# facial recognition kpop
 
 
 ## Description
