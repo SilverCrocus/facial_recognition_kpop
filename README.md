@@ -1,4 +1,4 @@
-# facial recognition kpop
+# Facial Recognition Itzy
 
 
 ## Description
