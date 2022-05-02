@@ -24,8 +24,4 @@ Facial recognition for itzy members using Praw to get the images and facial reco
 
 
 
-## Acknowledgments
-
-Code Samlples
-* [Facial Recoginition](https://github.com/ageitgey/face_recognition)
 
